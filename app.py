@@ -337,7 +337,7 @@ def avaliar_termo(
 # INTERFACE
 # =====================================================
 
-st.subheader("2. Upload dos documentos")
+st.subheader("1. Upload dos documentos")
 
 documentos = st.file_uploader(
     "Arquivos DOU",
