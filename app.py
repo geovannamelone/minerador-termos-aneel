@@ -530,7 +530,7 @@ for coluna in ws.columns:
                 file_name="resultado_glossario.xlsx",
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
             )
-        else:
+else:
             st.warning(
                 "Nenhum candidato encontrado."
             )
