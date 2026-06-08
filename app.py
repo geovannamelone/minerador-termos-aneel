@@ -528,7 +528,7 @@ if documentos:
                     data=buffer.getvalue(),
                     file_name="resultado_glossario.xlsx",
                     mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                    key=f"download_excel_resultados_{hash(buffer.getvalue())}"
+                    key=f"download_excel_{len(resultados)}_{doc.name}"
                 )
     else:
                 st.warning(
