@@ -512,15 +512,15 @@ if documentos:
                 
             buffer.seek(0)
                     
-                st.download_button(
-                    "📥 Baixar Excel",
-                    data=buffer,
-                    file_name="resultado_glossario.xlsx",
-                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                    key="download_excel_resultados"
+            st.download_button(
+                "📥 Baixar Excel",
+                data=buffer,
+                file_name="resultado_glossario.xlsx",
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                key="download_excel_resultados"
+            )
+                
+    else:
+                st.warning(
+                    "Nenhum candidato encontrado."
                 )
-                    
-        else:
-                    st.warning(
-                        "Nenhum candidato encontrado."
-                    )
