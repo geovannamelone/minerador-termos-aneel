@@ -527,7 +527,7 @@ if documentos:
                     key="download_excel_resultados"
                 )
                     
-                else:
-                            st.warning(
-                                "Nenhum candidato encontrado."
-                            )
+        else:
+                    st.warning(
+                        "Nenhum candidato encontrado."
+                    )
