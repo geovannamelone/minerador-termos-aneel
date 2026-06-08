@@ -483,7 +483,7 @@ if documentos:
                     sheet_name="Resultados"
                 )
 
-                ws = writer.sheets["Resultados"]
+                ws = writer.book["Resultados"]
         
                 # Cabeçalho
                 for cell in ws[1]:
@@ -491,22 +491,11 @@ if documentos:
                     cell.fill = PatternFill("solid", fgColor="1F4E78")
                     cell.alignment = Alignment(horizontal="center", vertical="center")
                 
-                    cell.fill = PatternFill(
-                        "solid",
-                        fgColor="1F4E78"
-                    )
-                
-                    cell.alignment = Alignment(
-                        horizontal="center",
-                        vertical="center"
-                    )
-                
                 # Ajustar largura das colunas
                 for coluna in ws.columns:
-                
                     tamanho = max(
                         len(str(cell.value))
-                        if cell.value is not None
+                        if cell.value
                         else 0
                         for cell in coluna
                     )
@@ -519,9 +508,13 @@ if documentos:
                         tamanho + 3, 60
                     )
                     
+                writer.close()
+                
+            buffer.seek(0)
+                    
                 st.download_button(
                     "📥 Baixar Excel",
-                    data=buffer.getvalue(),
+                    data=buffer,
                     file_name="resultado_glossario.xlsx",
                     mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                     key="download_excel_resultados"
