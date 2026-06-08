@@ -22,6 +22,8 @@ def carregar_glossario():
     return df
 from difflib import SequenceMatcher
 from openpyxl.cell.cell import ILLEGAL_CHARACTERS_RE
+from openpyxl.styles import Font, PatternFill, Alignment
+from openpyxl.utils import get_column_letter
 
 # =====================================================
 # CONFIGURAÇÃO
@@ -481,11 +483,8 @@ if documentos:
                     sheet_name="Resultados"
                 )
 
-            from openpyxl.styles import Font, PatternFill, Alignment
-from openpyxl.utils import get_column_letter
-
-ws = writer.sheets["Resultados"]
-
+                ws = writer.sheets["Resultados"]
+        
 # Cabeçalho
 for cell in ws[1]:
     cell.font = Font(
