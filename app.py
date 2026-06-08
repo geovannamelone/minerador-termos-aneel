@@ -523,7 +523,6 @@ for coluna in ws.columns:
         tamanho + 3,
         60
     )
-
             st.download_button(
                 "📥 Baixar Excel",
                 data=buffer.getvalue(),
