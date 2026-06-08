@@ -524,12 +524,6 @@ for coluna in ws.columns:
         60
     )
 
-# Congelar cabeçalho
-ws.freeze_panes = "A2"
-
-# Filtro automático
-ws.auto_filter.ref = ws.dimensions
-
             st.download_button(
                 "📥 Baixar Excel",
                 data=buffer.getvalue(),
