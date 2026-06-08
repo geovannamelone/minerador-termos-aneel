@@ -527,7 +527,7 @@ if documentos:
                     "📥 Baixar Excel",
                     data=buffer.getvalue(),
                     file_name="resultado_glossario.xlsx",
-                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                     key="download_excel_resultados"
                 )
     else:
