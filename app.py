@@ -485,52 +485,49 @@ if documentos:
 
                 ws = writer.sheets["Resultados"]
         
-    # Cabeçalho
-    for cell in ws[1]:
-        cell.font = Font(
-            bold=True,
-            color="FFFFFF"
-        )
-    
-        cell.fill = PatternFill(
-            "solid",
-            fgColor="1F4E78"
-        )
-    
-        cell.alignment = Alignment(
-            horizontal="center",
-            vertical="center"
-        )
-    
-    # Ajustar largura das colunas
-    for coluna in ws.columns:
-    
-        tamanho = max(
-            len(str(cell.value))
-            if cell.value is not None
-            else 0
-            for cell in coluna
-        )
-    
-        letra = get_column_letter(
-            coluna[0].column
-        )
-    
-        ws.column_dimensions[
-            letra
-        ].width = min(
-            tamanho + 3,
-            60
-        )
-        
-        st.download_button(
+                # Cabeçalho
+                for cell in ws[1]:
+                    cell.font = Font(bold=True, color="FFFFFF")
+                    cell.fill = PatternFill("solid", fgColor="1F4E78")
+                    cell.alignment = Alignment(horizontal="center", vertical="center")
+                
+                    cell.fill = PatternFill(
+                        "solid",
+                        fgColor="1F4E78"
+                    )
+                
+                    cell.alignment = Alignment(
+                        horizontal="center",
+                        vertical="center"
+                    )
+                
+                # Ajustar largura das colunas
+                for coluna in ws.columns:
+                
+                    tamanho = max(
+                        len(str(cell.value))
+                        if cell.value is not None
+                        else 0
+                        for cell in coluna
+                    )
+                
+                    letra = get_column_letter(
+                        coluna[0].column
+                    )
+                
+                    ws.column_dimensions[letra].width = min(
+                        tamanho + 3, 60
+                    )
+                    
+                st.download_button(
                     "📥 Baixar Excel",
                     data=buffer.getvalue(),
                     file_name="resultado_glossario.xlsx",
                     mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                    key=f"download_excel_{len(resultados)}_{doc.name}"
+                    key="download_excel_resultados"
                 )
-    else:
-                st.warning(
-                    "Nenhum candidato encontrado."
-                )
+                    
+                else:
+                            st.warning(
+                                "Nenhum candidato encontrado."
+                            )
