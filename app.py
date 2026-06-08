@@ -20,10 +20,21 @@ def carregar_glossario():
     ]
 
     return df
+
+def limpar_excel(valor):
+    if pd.isna(valor):
+        return valor
+
+    valor = str(valor)
+
+    # remove caracteres inválidos Excel/XML
+    return re.sub(r'[\x00-\x08\x0B\x0C\x0E-\x1F]', '', valor)
+
 from difflib import SequenceMatcher
 from openpyxl.cell.cell import ILLEGAL_CHARACTERS_RE
 from openpyxl.styles import Font, PatternFill, Alignment
 from openpyxl.utils import get_column_letter
+from openpyxl.styles import Color
 
 # =====================================================
 # CONFIGURAÇÃO
@@ -483,12 +494,12 @@ if documentos:
                     sheet_name="Resultados"
                 )
 
-                ws = writer.book["Resultados"]
+                ws = writer.sheets["Resultados"]
         
                 # Cabeçalho
                 for cell in ws[1]:
                     cell.font = Font(bold=True, color="FFFFFF")
-                    cell.fill = PatternFill("solid", fgColor="1F4E78")
+                    cell.fill = PatternFill(start_color="FF1F4E78", end_color="FF1F4E78", fill_type="solid")
                     cell.alignment = Alignment(horizontal="center", vertical="center")
                 
                 # Ajustar largura das colunas
@@ -507,10 +518,10 @@ if documentos:
                     ws.column_dimensions[letra].width = min(
                         tamanho + 3, 60
                     )
+
+            buffer.seek(0)
                     
                 writer.close()
-                
-            buffer.seek(0)
                     
             st.download_button(
                 "📥 Baixar Excel",
